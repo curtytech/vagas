@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string('state', 100)->nullable();
             $table->string('country', 100)->nullable();
             $table->string('position', 100)->nullable();
+            $table->string('function', 100)->nullable();
             // $table->string('resume_path')->nullable();
             $table->string('linkedin_url')->nullable();
             $table->string('portfolio_url')->nullable();
             $table->string('curriculum_pdf_path')->nullable();
             $table->string('photo_path')->nullable();
             $table->text('summary')->nullable();
+            $table->number('access_count')->default(0);
             $table->timestamps();
         });
     }

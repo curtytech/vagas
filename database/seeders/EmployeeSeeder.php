@@ -14,7 +14,7 @@ class EmployeeSeeder extends Seeder
         $employeeUsers = DB::table('users')
             ->where('role', 'employee')
             ->orderBy('id')
-            ->limit(2)
+            ->limit(4) // aumente para 3 para corresponder aos 3 registros abaixo
             ->get();
 
         DB::table('employees')->insert([
@@ -24,7 +24,7 @@ class EmployeeSeeder extends Seeder
                 'city' => 'São Paulo',
                 'state' => 'SP',
                 'country' => 'Brasil',
-                'resume_path' => null,
+                'function' => 'Desenvolvedor Backend',
                 'linkedin_url' => 'https://www.linkedin.com/in/alice-candidate',
                 'portfolio_url' => null,
                 'summary' => 'Dev backend júnior com interesse em PHP/Laravel.',
@@ -37,10 +37,23 @@ class EmployeeSeeder extends Seeder
                 'city' => 'Rio de Janeiro',
                 'state' => 'RJ',
                 'country' => 'Brasil',
-                'resume_path' => null,
+                'function' => 'Designer',
                 'linkedin_url' => 'https://www.linkedin.com/in/bruno-candidate',
                 'portfolio_url' => null,
                 'summary' => 'Designer UI/UX com foco em produtos digitais.',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'user_id' => $employeeUsers[2]->id,
+                'phone' => '+55 21 99999-9999',
+                'city' => 'Magé',
+                'state' => 'RJ',
+                'country' => 'Brasil',
+                'function' => 'Desenvolvedor',
+                'linkedin_url' => 'https://www.linkedin.com/in/phelipecurty',
+                'portfolio_url' => null,
+                'summary' => 'Desenvolvedor.',
                 'created_at' => $now,
                 'updated_at' => $now,
             ],

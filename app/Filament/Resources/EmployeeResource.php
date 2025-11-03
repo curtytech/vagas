@@ -18,7 +18,7 @@ class EmployeeResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user';
     protected static ?string $navigationLabel = 'Meu Perfil';
     protected static ?string $navigationGroup = 'Employee';
-
+    
     public static function shouldRegisterNavigation(): bool
     {
         $role = auth()->user()?->role;
@@ -47,6 +47,7 @@ class EmployeeResource extends Resource
             Forms\Components\TextInput::make('city')->label('Cidade'),
             Forms\Components\TextInput::make('state')->label('Estado'),
             Forms\Components\TextInput::make('country')->label('País'),
+            Forms\Components\TextInput::make('function')->label('Função')->placeholder('Informe a função sua principal.'),
             Forms\Components\TextInput::make('linkedin_url')->label('LinkedIn'),
             Forms\Components\Textarea::make('summary')->label('Resumo'),
             Forms\Components\FileUpload::make('curriculum_pdf_path')
@@ -60,7 +61,7 @@ class EmployeeResource extends Resource
                 ->disk('public')
                 ->directory('employees/photos')
                 ->acceptedFileTypes(['image/*'])
-                ->maxSize(10240),
+                ->maxSize(10240)
                 ->acceptedFileTypes(['image/webp', 'image/png', 'image/jpeg', 'image/jpg'])
                 ->rules(['mimes:webp,png,jpg,jpeg']),
             Forms\Components\TextInput::make('address')

@@ -44,14 +44,7 @@
                                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-3-3m3 3l3-3M6 21h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                                                 Ver currículo 
                                             </a>
-                                        @endif
-                                        @if($employee->resume_path)
-                                            <a href="{{ Storage::url($employee->resume_path) }}" target="_blank"
-                                               class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-neutral-900 ring-1 ring-neutral-200 hover:bg-neutral-50 font-medium">
-                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M4 7a2 2 0 012-2h8l4 4v9a2 2 0 01-2 2H6a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="2"/></svg>
-                                                Visualizar arquivo
-                                            </a>
-                                        @endif
+                                        @endif                                    
                                     </div>
                                 </div>
 

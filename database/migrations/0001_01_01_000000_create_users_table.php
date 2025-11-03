@@ -31,16 +31,7 @@ return new class extends Migration
                 'password' => Hash::make('12345678'),
                 'role' => 'admin',
             ]
-        );
-        User::firstOrCreate(
-            ['email' => 'employee@employee'],
-            [
-                'name' => 'Employee',
-                'email_verified_at' => now(),
-                'password' => Hash::make('12345678'),
-                'role' => 'employee',
-            ]
-        );
+        );       
         User::firstOrCreate(
             ['email' => 'enterprise@enterprise'],
             [

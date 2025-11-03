@@ -12,6 +12,7 @@ class Employee extends Model
         'city',
         'state',
         'country',
+        'function',
         'resume_path',
         'curriculum_pdf_path',
         'address',

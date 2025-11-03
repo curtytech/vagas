@@ -18,7 +18,7 @@ class EmployeeController extends Controller
                 'employees.city',
                 'employees.state',
                 'employees.country',
-                'employees.resume_path',
+                'employees.function',
                 'employees.curriculum_pdf_path',
                 'employees.address',
                 'employees.number',
