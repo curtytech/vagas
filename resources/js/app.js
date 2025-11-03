@@ -12,28 +12,14 @@ import './bootstrap';
 
 // Toggle ao clicar no botão
 document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('theme-toggle');
-    if (!toggle) return;
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
 
-    // Ajusta ícones conforme estado atual
-    const isDark = document.documentElement.classList.contains('dark');
-    const sun = toggle.querySelector('[data-icon="sun"]');
-    const moon = toggle.querySelector('[data-icon="moon"]');
-    if (sun && moon) {
-        sun.classList.toggle('hidden', isDark);
-        moon.classList.toggle('hidden', !isDark);
-    }
-
-    toggle.addEventListener('click', () => {
-        const isDarkNow = document.documentElement.classList.contains('dark');
-        const next = isDarkNow ? 'light' : 'dark';
-        document.documentElement.classList.toggle('dark', next === 'dark');
-        document.documentElement.style.colorScheme = next === 'dark' ? 'dark' : 'light';
-        localStorage.setItem('theme', next);
-
-        if (sun && moon) {
-            sun.classList.toggle('hidden', next === 'dark');
-            moon.classList.toggle('hidden', next === 'light');
-        }
+    btn.addEventListener('click', () => {
+        const root = document.documentElement;
+        const isDark = root.classList.toggle('dark');
+        try {
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        } catch (e) {}
     });
 });

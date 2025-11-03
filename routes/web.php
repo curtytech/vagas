@@ -37,5 +37,7 @@ Route::get('/', function () {
     return view('welcome', compact('jobs', 'resumes'));
 });
 
+Route::get('/buscar-vagas', [JobController::class, 'search'])->name('jobs.search');
+
 Route::get('/vagas/{slug}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('/candidatos/{id}', [EmployeeController::class, 'show'])->name('employees.show');
