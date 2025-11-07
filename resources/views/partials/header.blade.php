@@ -12,16 +12,16 @@
 
         <div class="flex items-center gap-3">
             <button id="themeToggle" class="inline-flex items-center gap-2 rounded-md border border-neutral-200 dark:border-neutral-800 px-3 py-2 text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900">
-                <span class="hidden dark:inline">☀️ Claro</span>
-                <span class="inline dark:hidden">🌙 Escuro</span>
+                <span id="themeToggleIconLight" class="">☀️ Claro</span>
+                <span id="themeToggleIconDark" class="hidden ">🌙 Escuro</span>
             </button>
 
             @auth
-                <a href="{{ url('/admin') }}" class="px-3 py-2 rounded-md text-sm font-medium bg-neutral-900 text-white hover:bg-black">Painel</a>
+            <a href="{{ url('/admin') }}" class="px-3 py-2 rounded-md text-sm font-medium bg-neutral-900 text-white hover:bg-black">Painel</a>
             @else
-                @if (Route::has('login'))
-                    <a href="{{ route('login') }}" class="px-3 py-2 rounded-md text-sm font-medium text-neutral-800 hover:bg-neutral-100">Entrar</a>
-                @endif
+            @if (Route::has('login'))
+            <a href="{{ route('login') }}" class="px-3 py-2 rounded-md text-sm font-medium text-neutral-800 hover:bg-neutral-100">Entrar</a>
+            @endif
             @endauth
         </div>
     </nav>

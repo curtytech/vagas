@@ -1,25 +1,31 @@
 import './bootstrap';
 
-// Inicializa tema com base no localStorage ou preferência do sistema
-(function initTheme() {
-    const saved = localStorage.getItem('theme');
+(function () {
+    const stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = saved ? saved === 'dark' : prefersDark;
-
-    document.documentElement.classList.toggle('dark', isDark);
-    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
 })();
 
-// Toggle ao clicar no botão
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('themeToggle');
-    if (!btn) return;
+document.getElementById('themeToggle').addEventListener('click', () => {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle('dark');
+    console.log(isDark)
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    document.getElementById('themeToggleIconLight').classList.toggle('hidden', isDark);
+    document.getElementById('themeToggleIconDark').classList.toggle('hidden', !isDark);
+    console.log(localStorage.getItem('theme'))
 
-    btn.addEventListener('click', () => {
-        const root = document.documentElement;
-        const isDark = root.classList.toggle('dark');
-        try {
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        } catch (e) {}
-    });
 });
+
+module.exports = {
+    darkMode: 'class', // recomendado para toggle manual
+    // ou: darkMode: 'media', // detecta a preferência do sistema automaticamente
+    content: ['./src/**/*.{js,jsx,ts,tsx,html}'],
+    theme: { /* ... */ },
+    plugins: [],
+}

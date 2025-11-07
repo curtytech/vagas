@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('curriculum_pdf_path')->nullable();
             $table->string('photo_path')->nullable();
             $table->text('summary')->nullable();
-            $table->number('access_count')->default(0);
+            $table->unsignedInteger('access_count')->default(0);
             $table->timestamps();
         });
     }

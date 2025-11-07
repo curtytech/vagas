@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('published_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->string('apply_url')->nullable();
-            $table->number('access_count')->default(0);
+            $table->unsignedInteger('access_count')->default(0);
             $table->timestamps();
         });
     }
