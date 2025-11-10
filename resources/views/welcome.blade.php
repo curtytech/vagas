@@ -23,11 +23,10 @@
             <div class="relative">
                 <div class="rounded-xl p-1 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500">
                     <div class="rounded-lg bg-white p-6 shadow-sm dark:bg-neutral-900">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="rounded-lg bg-neutral-100 h-24 dark:bg-neutral-800"></div>
-                            <div class="rounded-lg bg-neutral-100 h-24 dark:bg-neutral-800"></div>
-                            <div class="rounded-lg bg-neutral-100 h-24 dark:bg-neutral-800"></div>
-                            <div class="rounded-lg bg-neutral-100 h-24 dark:bg-neutral-800"></div>
+                        <div class="flex">
+                             <img src="{{ asset('images/reuniao_empresa.jpg') }}" 
+                               alt="Imagem representando conexões de trabalho" 
+                               class="rounded-lg w-full h-64  object-cover">
                         </div>
                         <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
                             Visual moderno, experiência simples, foco em resultado.
