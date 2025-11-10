@@ -13,10 +13,10 @@
 
     <!-- Hero com gradiente -->
     <section class="relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-amber-100/60 via-orange-100/40 to-transparent pointer-events-none dark:from-amber-500/10 dark:via-orange-500/5"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-amber-100/60 via-orange-100/40 to-transparent pointer-events-none"></div>
         <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <!-- Card do perfil -->
-            <div class="rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+            <div class="rounded-2xl border border-neutral-200 bg-white shadow-sm  ">
                 <div class="p-6 sm:p-8">
                     <!-- Cabeçalho do perfil -->
                     <div class="flex items-start gap-6">

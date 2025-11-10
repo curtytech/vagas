@@ -21,11 +21,3 @@ document.getElementById('themeToggle').addEventListener('click', () => {
     console.log(localStorage.getItem('theme'))
 
 });
-
-module.exports = {
-    darkMode: 'class', // recomendado para toggle manual
-    // ou: darkMode: 'media', // detecta a preferência do sistema automaticamente
-    content: ['./src/**/*.{js,jsx,ts,tsx,html}'],
-    theme: { /* ... */ },
-    plugins: [],
-}
