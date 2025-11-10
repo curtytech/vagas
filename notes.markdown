@@ -23,6 +23,8 @@ php artisan migrate
 
 php artisan db:seed
 
+php artisan key:generate 
+
 ### criar link simbólico
 php artisan storage:link
 
