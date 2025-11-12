@@ -3,7 +3,7 @@
         <div class="flex items-center gap-3">
             <a href="/" class="inline-flex items-center gap-2 font-semibold text-lg">
                 <span class="inline-block w-8 h-8 rounded-md bg-gradient-to-br from-amber-500 to-orange-600"></span>
-                <span class="text-black">VagasMage</span>
+                <span class="text-neutral-800">VagasMage</span>
             </a>
             <span class="hidden md:inline-block text-black">•</span>
             <span class="hidden md:inline-block text-black">Conectando talentos e empresas</span>

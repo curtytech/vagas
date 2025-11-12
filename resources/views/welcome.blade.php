@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-                <h1 class="text-3xl sm:text-5xl font-bold tracking-tight">
+                <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-800">
                     Encontre seu próximo desafio ou o talento ideal
                 </h1>
                 <p class="mt-4 text-neutral-700 text-lg ">
@@ -40,13 +40,13 @@
 <!-- Principais vagas -->
 <section id="vagas" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold">Principais vagas</h2>
+        <h2 class="text-2xl font-semibold text-neutral-800 ">Principais vagas</h2>
         <a href="{{ url('/buscar-vagas') }}" class="text-sm font-medium text-neutral-700 hover:text-neutral-900  ">Buscar vagas</a>
     </div>
 
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse(($jobs ?? []) as $job)
-        <article class="group rounded-lg border border-neutral-200 bg-white hover:shadow-sm transition  ">
+        <article class="group rounded-lg border border-neutral-200 bg-white hover:shadow-sm transition ">
             <div class="p-4">
                 <div class="flex items-center justify-between">
                     <span class="inline-flex items-center gap-2 text-xs text-neutral-600 ">
@@ -57,14 +57,14 @@
                     <span class="text-xs text-neutral-500 ">{{ \Illuminate\Support\Carbon::parse($job->published_at)->diffForHumans() }}</span>
                     @endif
                 </div>
-                <h3 class="mt-2 text-lg font-semibold tracking-tight group-hover:text-neutral-900">
+                <h3 class="mt-2 text-lg font-semibold tracking-tight text-neutral-800 group-hover:text-neutral-900 ">
                     {{ $job->title }}
                 </h3>
                 <p class="mt-1 text-sm text-neutral-600 ">
                     {{ $job->company_name }}
                 </p>
                 <div class="mt-4">
-                    <a href="{{ route('jobs.show', $job->slug) }}" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-800 hover:underline underline-offset-4 dark:text-neutral-200">
+                    <a href="{{ route('jobs.show', $job->slug) }}" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-800 hover:underline underline-offset-4 ">
                         Detalhes da vaga
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                             <path d="M13 5l7 7-7 7M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -83,16 +83,16 @@
 
 <!-- Melhores currículos -->
 <section id="curriculos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h2 class="text-2xl font-semibold">Melhores currículos</h2>
+    <h2 class="text-2xl font-semibold text-neutral-800">Melhores currículos</h2>
 
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse(($resumes ?? []) as $resume)
-        <article class="rounded-lg border border-neutral-200 bg-white hover:shadow-sm transition ">
+        <article class="rounded-lg border border-neutral-200 bg-white hover:shadow-sm transition">
             <div class="p-4">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-lg font-semibold text-neutral-800">{{ $resume->name }}</h3>
+                    <h3 class="text-lg font-semibold text-neutral-800 ">{{ $resume->name }}</h3>
                     @if($resume->linkedin_url)
-                    <a href="{{ $resume->linkedin_url }}" target="_blank" class="text-sm text-neutral-700 hover:underline underline-offset-4">LinkedIn</a>
+                    <a href="{{ $resume->linkedin_url }}" target="_blank" class="text-sm text-neutral-700 hover:underline underline-offset-4 ">LinkedIn</a>
                     @endif
                 </div>
                 <p class="mt-1 text-sm text-neutral-600 ">
@@ -100,7 +100,7 @@
                     @if($resume->country) • {{ $resume->country }} @endif
                 </p>
                 @if($resume->summary)
-                <p class="mt-3 text-sm text-neutral-700 line-clamp-3">{{ $resume->summary }}</p>
+                <p class="mt-3 text-sm text-neutral-700 line-clamp-3 ">{{ $resume->summary }}</p>
                 @endif
                 <div class="mt-4">
                     <a href="{{ route('employees.show', $resume->id) }}" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-800 hover:underline underline-offset-4 ">
@@ -114,7 +114,7 @@
         </article>
         @empty
         <div class="col-span-full">
-            <div class="rounded-lg border border-neutral-200 bg-white p-6 text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400">
+            <div class="rounded-lg border border-neutral-200 bg-white p-6 text-neutral-600   ">
                 Nenhum currículo destacado ainda.
             </div>
         </div>
