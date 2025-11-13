@@ -5,9 +5,9 @@
                 <span class="inline-block w-8 h-8 rounded-md bg-gradient-to-br from-amber-500 to-orange-600"></span>
                 <span class="text-neutral-800">VagasMage</span>
             </a>
-            <span class="hidden md:inline-block text-black">•</span>
-            <span class="hidden md:inline-block text-black">Conectando talentos e empresas</span>
-            <a href="{{ url('/admin') }}" class="text-black">Admin</a>
+            <span class="hidden md:inline-block text-neutral-800">•</span>
+            <span class="hidden md:inline-block text-neutral-800">Conectando talentos e empresas</span>
+            <a href="{{ url('/admin') }}" class="text-neutral-800">Admin</a>
         </div>
 
         <div class="flex items-center gap-3">

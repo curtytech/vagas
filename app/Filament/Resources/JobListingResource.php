@@ -17,7 +17,7 @@ class JobListingResource extends Resource
     protected static ?string $model = JobListing::class;
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
     protected static ?string $navigationLabel = 'Minhas Vagas';
-    protected static ?string $navigationGroup = 'Enterprise';
+    protected static ?string $navigationGroup = 'Vagas';
 
     public static function shouldRegisterNavigation(): bool
     {
