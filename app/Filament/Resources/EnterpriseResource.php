@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Actions; // <— ADICIONADO: importa as ações da Tabela
 use Illuminate\Database\Eloquent\Builder;
 
 class EnterpriseResource extends Resource
@@ -118,16 +119,15 @@ class EnterpriseResource extends Resource
                 Tables\Columns\TextColumn::make('contact_email')->label('E-mail'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
+                Actions\EditAction::make()
                     ->visible(fn () => in_array(auth()->user()?->role, ['admin', 'enterprise'], true)),
-                Tables\Actions\DeleteAction::make()
+                Actions\DeleteAction::make()
                     ->visible(fn () => auth()->user()?->role === 'admin')
                     ->requiresConfirmation(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make()
-                    ->visible(fn () => auth()->user()?->role === 'admin')
-                    ->requiresConfirmation(),
+                Actions\DeleteBulkAction::make()
+                    ->visible(fn () => auth()->user()?->role === 'admin'),
             ]);
     }
 

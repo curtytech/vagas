@@ -14,6 +14,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Actions; 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
@@ -145,16 +146,15 @@ class EmployeeResource extends Resource
                     ->url(fn($record) => $record->curriculum_pdf_path ? Storage::url($record->curriculum_pdf_path) : null, true),
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
+                Actions\EditAction::make()
                     ->visible(fn () => in_array(auth()->user()?->role, ['admin', 'employee'], true)),
-                Tables\Actions\DeleteAction::make()
+                Actions\DeleteAction::make()
                     ->visible(fn () => auth()->user()?->role === 'admin')
                     ->requiresConfirmation(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make()
-                    ->visible(fn () => auth()->user()?->role === 'admin')
-                    ->requiresConfirmation(),
+                Actions\DeleteBulkAction::make()
+                    ->visible(fn () => auth()->user()?->role === 'admin'),
             ]);
     }
 
