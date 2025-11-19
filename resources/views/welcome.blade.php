@@ -14,10 +14,13 @@
                 </h1>
                 <p class="mt-4 text-neutral-700 text-lg ">
                     Empresas publicam vagas com clareza. Profissionais se candidatam com currículos bem apresentados.
+                    Simples e direto, conectando talentos e empresas.
+                    Sem Ats todos os perfis sao analisados por pessoas reais.
                 </p>
                 <div class="mt-6 flex flex-wrap gap-3">
-                    <a href="#vagas" class="px-5 py-2.5 rounded-md bg-neutral-900 text-white hover:bg-black font-medium">Ver vagas</a>
-                    <a href="#curriculos" class="px-5 py-2.5 rounded-md bg-white text-neutral-900 ring-1 ring-neutral-200 hover:bg-neutral-50 font-medium    -700">Melhores currículos</a>
+                    <a href="#vagas" class="px-5 py-2.5 rounded-md bg-neutral-900 text-white hover:bg-black font-medium">Principais Vagas</a>
+                    <a href="{{ url('/buscar-vagas') }}" class="px-5 py-2.5 rounded-md bg-neutral-900 text-white hover:bg-black font-medium">Buscar Vagas</a>
+                    <a href="#curriculos" class="px-5 py-2.5 rounded-md bg-white text-neutral-900 ring-1 ring-neutral-200 hover:bg-neutral-50 font-medium">Melhores currículos</a>
                 </div>
             </div>
             <div class="relative">

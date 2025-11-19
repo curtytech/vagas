@@ -23,6 +23,8 @@ class JobController extends Controller
                 'job_listings.salary_max',
                 'job_listings.status',
                 'job_listings.published_at',
+                'job_listings.expires_at',
+                'job_listings.access_count',
                 'enterprises.company_name',
                 'enterprises.company_slug',
                 'enterprises.website_url'
