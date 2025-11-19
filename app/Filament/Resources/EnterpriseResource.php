@@ -22,9 +22,13 @@ use Illuminate\Database\Eloquent\Builder;
 class EnterpriseResource extends Resource
 {
     protected static ?string $model = Enterprise::class;
+    protected static ?string $modelLabel = 'Empresa';
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
     protected static ?string $navigationLabel = 'Minha Empresa';
     protected static ?string $navigationGroup = 'Empresa';
+    protected static ?string $pluralModelLabel = 'Empresas';
+    protected static ?string $recordTitleAttribute = 'Empresa';
+    protected static ?string $title = 'Empresa';
 
     public static function shouldRegisterNavigation(): bool
     {
