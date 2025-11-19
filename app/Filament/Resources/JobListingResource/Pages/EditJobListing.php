@@ -8,4 +8,5 @@ use Filament\Resources\Pages\EditRecord;
 class EditJobListing extends EditRecord
 {
     protected static string $resource = JobListingResource::class;
+    protected static ?string $title = 'Editar vaga';
 }

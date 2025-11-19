@@ -11,6 +11,8 @@ class CreateJobListing extends CreateRecord
 {
     protected static string $resource = JobListingResource::class;
 
+    protected static ?string $title = 'Criar vaga';
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $user = auth()->user();

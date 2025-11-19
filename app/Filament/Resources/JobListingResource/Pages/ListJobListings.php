@@ -10,6 +10,8 @@ class ListJobListings extends ListRecords
 {
     protected static string $resource = JobListingResource::class;
 
+    protected static ?string $title = 'Vagas';
+
     protected function getHeaderActions(): array
     {
         $user = auth()->user();

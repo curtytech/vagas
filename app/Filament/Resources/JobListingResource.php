@@ -26,6 +26,9 @@ class JobListingResource extends Resource
     protected static ?string $model = JobListing::class;
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
     protected static ?string $navigationLabel = 'Minhas Vagas';
+    protected static ?string $modelLabel = 'Vaga';
+    protected static ?string $pluralModelLabel = 'Vagas';
+    protected static ?string $recordTitleAttribute = 'title';
     protected static ?string $navigationGroup = 'Vagas';
     protected static ?string $title = 'Vagas';
 
