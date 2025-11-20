@@ -77,7 +77,7 @@
             </div>
         </article>
         @empty
-        <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-6 bg-white/70 dark:bg-neutral-900/60">
+        <div class="rounded-lg border border-neutral-200 p-6 bg-white/70 ">
             Nenhuma vaga encontrada.
         </div>
         @endforelse

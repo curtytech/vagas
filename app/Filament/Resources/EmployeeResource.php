@@ -21,8 +21,14 @@ use Illuminate\Support\Facades\Storage;
 class EmployeeResource extends Resource
 {
     protected static ?string $model = Employee::class;
+    protected static ?string $modelLabel = 'Funcionário';
+    protected static ?string $pluralModelLabel = 'Funcionários';
     protected static ?string $navigationIcon = 'heroicon-o-user';
-    protected static ?string $navigationLabel = 'Meu Perfil';
+    protected static ?string $navigationLabel = 'Funcionários';
+    protected static ?string $navigationGroup = 'Empresa';
+    protected static ?string $recordTitleAttribute = 'nome'; 
+    protected static ?string $title = 'Funcionários';
+
     // protected static ?string $navigationGroup = 'Employee';
 
     public static function shouldRegisterNavigation(): bool
@@ -106,7 +112,7 @@ class EmployeeResource extends Resource
                 ])
                 ->collapsible(),
 
-            Section::make('Uploads')
+            Section::make('Arquivos')
                 ->schema([
                     Grid::make(2)->schema([
                         FileUpload::make('photo_path')
@@ -136,7 +142,7 @@ class EmployeeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')->label('User'),
+                Tables\Columns\TextColumn::make('user_id')->label('Usuário'),
                 Tables\Columns\TextColumn::make('phone')->label('Telefone'),
                 Tables\Columns\TextColumn::make('city')->label('Cidade'),
                 Tables\Columns\TextColumn::make('address')->label('Endereço'),

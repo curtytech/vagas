@@ -17,9 +17,14 @@ use Illuminate\Database\Eloquent\Builder;
 class JobApplicationResource extends Resource
 {
     protected static ?string $model = JobApplication::class;
+    protected static ?string $modelLabel = 'Candidatura';
+    protected static ?string $pluralModelLabel = 'Candidaturas';
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationLabel = 'Candidaturas';
     protected static ?string $navigationGroup = 'Vagas';
+    protected static ?string $recordTitleAttribute = 'id'; // ajuste para o campo correto (ex.: 'nome', 'user.name', etc.)
+    protected static ?string $title = 'Candidaturas';
+
 
     public static function shouldRegisterNavigation(): bool
     {

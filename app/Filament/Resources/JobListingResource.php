@@ -32,7 +32,6 @@ class JobListingResource extends Resource
     protected static ?string $navigationGroup = 'Vagas';
     protected static ?string $title = 'Vagas';
 
-
     public static function shouldRegisterNavigation(): bool
     {
         $role = auth()->user()?->role;
