@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobApplicationController;
+use App\Http\Controllers\RegistrationController;
 
 Route::get('/', function () {
     $jobs = DB::table('job_listings')
@@ -41,7 +42,15 @@ Route::get('/', function () {
 Route::get('/buscar-vagas', [JobController::class, 'search'])->name('jobs.search');
 
 Route::get('/vagas/{slug}', [JobController::class, 'show'])->name('jobs.show');
-
+Route::get('/candidatos/{id}', [EmployeeController::class, 'show'])->name('employees.show');
 Route::post('/vagas/{slug}/candidatar', [JobApplicationController::class, 'store'])->name('jobs.apply');
 
-Route::get('/candidatos/{id}', [EmployeeController::class, 'show'])->name('employees.show');
+Route::get('/register', [RegistrationController::class, 'show'])->name('register.show');
+Route::post('/register', [RegistrationController::class, 'register'])->name('register.store');
+
+Route::post('/logout', function () {
+    auth()->logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
