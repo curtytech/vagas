@@ -12,6 +12,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
+
 use Illuminate\Database\Eloquent\Builder;
 
 class JobApplicationResource extends Resource
@@ -70,9 +72,9 @@ class JobApplicationResource extends Resource
     public static function table(Table $table): Table
     {
         return $table->columns([
-            Tables\Columns\TextColumn::make('jobListing.title')->label('Vaga')->sortable(),
-            Tables\Columns\TextColumn::make('employee.user.name')->label('Candidato')->sortable(),
-            Tables\Columns\TextColumn::make('status')
+            TextColumn::make('jobListing.title')->label('Vaga')->sortable(),
+            TextColumn::make('employee.user.name')->label('Candidato')->sortable(),
+            TextColumn::make('status')
                 ->badge()
                 ->formatStateUsing(fn (string $state): string => match ($state) {
                     'applied'      => 'Aplicada',
@@ -82,7 +84,7 @@ class JobApplicationResource extends Resource
                     'hired'        => 'Contratado',
                     default        => $state,
                 }),
-            Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Criada em'),
+            TextColumn::make('created_at')->dateTime()->label('Criada em'),
         ]);
     }
 

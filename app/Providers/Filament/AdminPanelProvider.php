@@ -66,6 +66,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->renderHook('panels::auth.login.form.after', fn (): string => view('auth.partials.register_hint')->render())
             ->authMiddleware([
                 Authenticate::class,
             ]);

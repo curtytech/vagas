@@ -27,7 +27,8 @@
             @endauth
 
             @if(!auth()->check())
-            <a href="{{ url('/admin') }}" class="px-3 py-2 rounded-md text-sm font-medium bg-neutral-900 text-white hover:bg-black">Login</a>
+            <a href="{{ url('/register') }}" class="px-3 py-2 rounded-md text-sm font-medium bg-orange-600 text-white hover:bg-black">Cadastre-se</a>
+            <a href="{{ url('/admin') }}" class="px-3 py-2 rounded-md text-sm font-medium bg-neutral-900 text-white hover:bg-orange-600">Login</a>
             @endif
             
         </div>

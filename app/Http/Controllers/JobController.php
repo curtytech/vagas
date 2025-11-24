@@ -34,7 +34,24 @@ class JobController extends Controller
 
         abort_unless($job, 404);
 
-        return view('jobs.show', compact('job'));
+        // Verifica se o usuário autenticado (candidato) já possui candidatura nesta vaga
+        $application = null;
+        $user = auth()->user();
+        if ($user && $user->role === 'employee') {
+            $employee = DB::table('employees')->where('user_id', $user->id)->first();
+            if ($employee) {
+                $application = DB::table('job_applications')
+                    ->select('id', 'status')
+                    ->where('job_listing_id', $job->id)
+                    ->where('employee_id', $employee->id)
+                    ->first();
+            }
+        }
+
+        return view('jobs.show', [
+            'job' => $job,
+            'application' => $application,
+        ]);
     }
 
     // Nova página de busca de vagas

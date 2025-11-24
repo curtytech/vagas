@@ -63,14 +63,14 @@ class JobListingResource extends Resource
                     Grid::make(2)->schema([
                         Select::make('enterprise_id')
                             ->label('Empresa')
-                            ->options(fn () => Enterprise::query()
+                            ->options(fn() => Enterprise::query()
                                 ->orderBy('company_name')
                                 ->pluck('company_name', 'id')
                                 ->toArray())
-                            ->default(fn () => Enterprise::query()
+                            ->default(fn() => Enterprise::query()
                                 ->where('user_id', auth()->id())
                                 ->value('id'))
-                            ->disabled(fn () => auth()->user()?->role === 'enterprise')
+                            ->disabled(fn() => auth()->user()?->role === 'enterprise')
                             ->required(),
 
                         TextInput::make('title')
@@ -88,7 +88,7 @@ class JobListingResource extends Resource
                             ->label('Slug')
                             ->required()
                             ->maxLength(180)
-                            ->dehydrateStateUsing(fn ($state) => Str::slug((string) $state))
+                            ->dehydrateStateUsing(fn($state) => Str::slug((string) $state))
                             ->unique(table: 'job_listings', column: 'slug', ignoreRecord: true),
 
                         TextInput::make('location')
@@ -166,19 +166,27 @@ class JobListingResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title')->label('Título')->searchable()->sortable(),
-                TextColumn::make('status')->label('Status')->badge()->sortable(),
+                TextColumn::make('status')->label('Status')->badge()->sortable()
+                    ->badge()
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        'published'      => 'Publicada',
+                        'closed' => 'Encerrada',
+                        'draft' => 'Rascunho',
+                        default        => $state,
+                    }),
+
                 TextColumn::make('published_at')->label('Publicada em')->dateTime()->sortable(),
             ])
             ->actions([
                 Actions\EditAction::make()
-                    ->visible(fn () => in_array(auth()->user()?->role, ['admin', 'enterprise'], true)),
+                    ->visible(fn() => in_array(auth()->user()?->role, ['admin', 'enterprise'], true)),
                 Actions\DeleteAction::make()
-                    ->visible(fn () => auth()->user()?->role === 'admin')
+                    ->visible(fn() => auth()->user()?->role === 'admin')
                     ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Actions\DeleteBulkAction::make()
-                    ->visible(fn () => auth()->user()?->role === 'admin'),
+                    ->visible(fn() => auth()->user()?->role === 'admin'),
             ]);
     }
 
@@ -202,7 +210,7 @@ class JobListingResource extends Resource
         }
         if ($user->role === 'enterprise') {
             $enterprise = Enterprise::query()->where('user_id', $user->id)->first();
-            return parent::getEloquentQuery()->when($enterprise, fn ($q) => $q->where('enterprise_id', $enterprise->id), fn ($q) => $q->whereRaw('1 = 0'));
+            return parent::getEloquentQuery()->when($enterprise, fn($q) => $q->where('enterprise_id', $enterprise->id), fn($q) => $q->whereRaw('1 = 0'));
         }
         return parent::getEloquentQuery()->whereRaw('1 = 0');
     }
