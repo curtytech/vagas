@@ -20,14 +20,14 @@ use Illuminate\Support\Facades\Storage;
 
 class EmployeeResource extends Resource
 {
-    protected static ?string $model = Employee::class;
-    protected static ?string $modelLabel = 'Funcionário';
-    protected static ?string $pluralModelLabel = 'Funcionários';
+    protected static ?string $model = Employee::class;    
+    protected static ?string $modelLabel = 'Currículo';
+    protected static ?string $pluralModelLabel = 'Currículo';
     protected static ?string $navigationIcon = 'heroicon-o-user';
-    protected static ?string $navigationLabel = 'Funcionários';
-    protected static ?string $navigationGroup = 'Empresa';
+    protected static ?string $navigationLabel = 'Currículo';
+    protected static ?string $navigationGroup = 'Perfil';
     protected static ?string $recordTitleAttribute = 'nome'; 
-    protected static ?string $title = 'Funcionários';
+    protected static ?string $title = 'Currículo';
 
     // protected static ?string $navigationGroup = 'Employee';
 
@@ -142,14 +142,18 @@ class EmployeeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')->label('Usuário'),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nome')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user.email')
+                    ->label('Email')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('phone')->label('Telefone'),
                 Tables\Columns\TextColumn::make('city')->label('Cidade'),
                 Tables\Columns\TextColumn::make('address')->label('Endereço'),
-                Tables\Columns\TextColumn::make('number')->label('Número'),
                 Tables\Columns\TextColumn::make('curriculum_pdf_path')
                     ->label('Currículo')
-                    ->url(fn($record) => $record->curriculum_pdf_path ? Storage::url($record->curriculum_pdf_path) : null, true),
+                    ->url(fn($record) => $record->curriculum_pdf_path ? \Illuminate\Support\Facades\Storage::url($record->curriculum_pdf_path) : null, true),
             ])
             ->actions([
                 Actions\EditAction::make()

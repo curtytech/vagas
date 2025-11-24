@@ -70,9 +70,18 @@ class JobApplicationResource extends Resource
     public static function table(Table $table): Table
     {
         return $table->columns([
-            Tables\Columns\TextColumn::make('job_listing_id')->label('Vaga')->sortable(),
-            Tables\Columns\TextColumn::make('employee_id')->label('Candidato')->sortable(),
-            Tables\Columns\TextColumn::make('status')->badge(),
+            Tables\Columns\TextColumn::make('jobListing.title')->label('Vaga')->sortable(),
+            Tables\Columns\TextColumn::make('employee.user.name')->label('Candidato')->sortable(),
+            Tables\Columns\TextColumn::make('status')
+                ->badge()
+                ->formatStateUsing(fn (string $state): string => match ($state) {
+                    'applied'      => 'Aplicada',
+                    'under_review' => 'Em análise',
+                    'shortlisted'  => 'Pré-selecionada',
+                    'rejected'     => 'Rejeitada',
+                    'hired'        => 'Contratado',
+                    default        => $state,
+                }),
             Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Criada em'),
         ]);
     }
