@@ -16,10 +16,11 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions; // <— ADICIONADO
+use Filament\Tables\Actions; 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Set;
 
 class JobListingResource extends Resource
 {
@@ -78,8 +79,8 @@ class JobListingResource extends Resource
                             ->required()
                             ->maxLength(150)
                             ->live(onBlur: true)
-                            ->afterStateUpdated(function ($state, Set $set) {
-                                $set('slug', Str::slug((string) $state));
+                            ->afterStateUpdated(function (Set $set, ?string $state) {
+                                $set('slug', \Illuminate\Support\Str::slug((string) $state));
                             }),
                     ]),
 
